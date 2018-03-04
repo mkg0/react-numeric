@@ -1,7 +1,12 @@
 {
   "name": "react-numeric",
+  "description": "A React component for choosing dates and date ranges.",
   "version": "0.0.1",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkg0/react-numeric"
+  },
+  "main": "dist/index.js",
   "keywords": [
     "autonumeric",
     "currency",
@@ -16,6 +21,7 @@
     "react",
     "numeric"
   ],
+  "author": "Mehmet Kamil Morcay <mehmetmorcay@gmail.com> (https://github.com/mkg0)",
   "license": "MIT",
   "dependencies": {
     "autonumeric": "^4.2.7",
