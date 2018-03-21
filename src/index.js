@@ -37,6 +37,8 @@ export default class ReactNumeric extends React.Component {
         ref={ref => (this.input = ref)}
         type={this.props.type}
         onChange={event => this.props.onChange(event, this.getValue())}
+        className={this.props.className}
+        style={this.props.style}
       />
     );
   }
@@ -44,6 +46,8 @@ export default class ReactNumeric extends React.Component {
 
 ReactNumeric.propTypes = {
   type: PropTypes.oneOf(["text", "tel", "hidden"]),
+  className: PropTypes.string,
+  style: PropTypes.object,
   allowDecimalPadding: PropTypes.bool,
   caretPositionOnFocus: PropTypes.number,
   createLocalList: PropTypes.bool,
