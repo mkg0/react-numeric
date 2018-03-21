@@ -1,7 +1,7 @@
 {
   "name": "react-numeric",
   "description": "A React component for choosing dates and date ranges.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/mkg0/react-numeric"
