@@ -25,6 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "autonumeric": "^4.2.7",
+    "html-webpack-plugin": "^3.0.7",
     "prop-types": "^15.6.1"
   },
   "devDependencies": {
@@ -53,9 +54,10 @@
     "build": "yarn build-library && yarn build-demo",
     "build-library": "NODE_ENV=production babel ./src --out-dir ./dist",
     "build-demo": "webpack -p",
-    "clear": "rm -rf dist demo/dist",
-    "dev": "webpack-dev-server --hot",
+    "clear": "rm -rf dist docs/dist",
+    "prebuild": "yarn clear",
+    "dev": "webpack-dev-server --hot --mode 'development'",
     "lint": "eslint 'src/**/*.js'",
-    "prettier": "prettier src/*.js demo/src/*.js --write"
+    "prettier": "prettier src/*.js docs/src/*.js --write"
   }
 }

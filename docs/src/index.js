@@ -137,4 +137,6 @@ class DemoPage extends Component {
   }
 }
 
-ReactDOM.render(<DemoPage />, document.querySelector("#root"));
+const root = document.createElement('div')
+document.body.appendChild(root);
+ReactDOM.render(<DemoPage />, root);
