@@ -39,6 +39,7 @@ export default class ReactNumeric extends React.Component {
         ref={ref => (this.input = ref)}
         type={this.props.type}
         onChange={e => this.callEventHandler(e, "onChange")}
+        onFocus={e => this.callEventHandler(e, "onFocus")}
         onBlur={e => this.callEventHandler(e, "onBlur")}
         onKeyPress={e => this.callEventHandler(e, "onKeyPress")}
         onKeyUp={e => this.callEventHandler(e, "onKeyUp")}
