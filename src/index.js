@@ -6,6 +6,7 @@ export default class ReactNumeric extends React.Component {
   constructor(props) {
     super(props);
     this.getValue = this.getValue.bind(this);
+    this.callEventHandler = this.callEventHandler.bind(this);
   }
   componentDidMount() {
     this.autonumeric = new AutoNumeric(this.input, this.props.value, {
@@ -31,12 +32,21 @@ export default class ReactNumeric extends React.Component {
     };
     return valueMapper[this.props.outputFormat](this.autonumeric);
   }
+  callEventHandler(event, eventName){
+    if(!this.props[eventName]) return;
+    this.props[eventName](event, this.getValue());
+  }
   render() {
+    const {onChange, onBlur, onKeyPress, onKeyUp, onKeyDown} = this.props;
     return (
       <input
         ref={ref => (this.input = ref)}
         type={this.props.type}
-        onChange={event => this.props.onChange(event, this.getValue())}
+        onChange={e => this.callEventHandler(e, 'onChange')}
+        onBlur={e => this.callEventHandler(e, 'onBlur')}
+        onKeyPress={e => this.callEventHandler(e, 'onKeyPress')}
+        onKeyUp={e => this.callEventHandler(e, 'onKeyUp')}
+        onKeyDown={e => this.callEventHandler(e, 'onKeyDown')}
         className={this.props.className}
         style={this.props.style}
       />
@@ -110,7 +120,7 @@ ReactNumeric.propTypes = {
   unformatOnHover: PropTypes.bool,
   unformatOnSubmit: PropTypes.bool,
   valuesToStrings: PropTypes.object,
-  wheelOn: PropTypes.string,
+  wheelOn: PropTypes.oneOf(["focus", "hover"]),
   wheelStep: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   preDefined: PropTypes.object
 };
