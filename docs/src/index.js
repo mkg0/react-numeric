@@ -13,7 +13,7 @@ class DemoPage extends Component {
       intro: 12345,
       example1: 12345,
       example2: "12345",
-      example3: 12345
+      example3: 12345,
     };
   }
   render() {
@@ -137,6 +137,6 @@ class DemoPage extends Component {
   }
 }
 
-const root = document.createElement('div')
+const root = document.createElement("div");
 document.body.appendChild(root);
 ReactDOM.render(<DemoPage />, root);

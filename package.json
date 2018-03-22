@@ -37,6 +37,9 @@
     "babel-preset-react": "^6.24.1",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.10",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "prettier": "^1.11.1",
     "react": "^16.2.0",
@@ -55,9 +58,9 @@
     "build-library": "NODE_ENV=production babel ./src --out-dir ./dist",
     "build-demo": "webpack -p",
     "clear": "rm -rf dist docs/dist",
-    "prebuild": "yarn clear",
+    "prebuild": "yarn clear && yarn lint",
     "dev": "webpack-dev-server --hot --mode 'development'",
     "lint": "eslint 'src/**/*.js'",
-    "prettier": "prettier src/*.js docs/src/*.js --write"
+    "prettier": "prettier src/**/*.js docs/src/**/*.js --write"
   }
 }

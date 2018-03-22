@@ -9,14 +9,6 @@ module.exports = {
       "prettier",
   ],
   rules: {
-      "prettier/prettier": ["error", {
-          "singleQuote": true,
-          "trailingComma": "es5",
-          "bracketSpacing": true,
-          "jsxBracketSameLine": true,
-          "printWidth": 100,
-          "parser": "babylon",
-      }]
   },
   parser: "babel-eslint",
   env: {

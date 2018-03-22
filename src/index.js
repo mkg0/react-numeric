@@ -13,40 +13,36 @@ export default class ReactNumeric extends React.Component {
       ...this.props.preDefined,
       ...this.props,
       onChange: undefined,
-      watchExternalChanges: false
+      watchExternalChanges: false,
     });
   }
 
   componentWillReceiveProps(newProps) {
-    if (
-      this.props.value !== newProps.value &&
-      this.getValue() !== newProps.value
-    )
+    if (this.props.value !== newProps.value && this.getValue() !== newProps.value)
       this.autonumeric.set(newProps.value);
   }
   getValue() {
     if (!this.autonumeric) return;
     const valueMapper = {
       string: numeric => numeric.getNumericString(),
-      number: numeric => numeric.getNumber()
+      number: numeric => numeric.getNumber(),
     };
     return valueMapper[this.props.outputFormat](this.autonumeric);
   }
-  callEventHandler(event, eventName){
-    if(!this.props[eventName]) return;
+  callEventHandler(event, eventName) {
+    if (!this.props[eventName]) return;
     this.props[eventName](event, this.getValue());
   }
   render() {
-    const {onChange, onBlur, onKeyPress, onKeyUp, onKeyDown} = this.props;
     return (
       <input
         ref={ref => (this.input = ref)}
         type={this.props.type}
-        onChange={e => this.callEventHandler(e, 'onChange')}
-        onBlur={e => this.callEventHandler(e, 'onBlur')}
-        onKeyPress={e => this.callEventHandler(e, 'onKeyPress')}
-        onKeyUp={e => this.callEventHandler(e, 'onKeyUp')}
-        onKeyDown={e => this.callEventHandler(e, 'onKeyDown')}
+        onChange={e => this.callEventHandler(e, "onChange")}
+        onBlur={e => this.callEventHandler(e, "onBlur")}
+        onKeyPress={e => this.callEventHandler(e, "onKeyPress")}
+        onKeyUp={e => this.callEventHandler(e, "onKeyUp")}
+        onKeyDown={e => this.callEventHandler(e, "onKeyDown")}
         className={this.props.className}
         style={this.props.style}
       />
@@ -58,6 +54,13 @@ ReactNumeric.propTypes = {
   type: PropTypes.oneOf(["text", "tel", "hidden"]),
   className: PropTypes.string,
   style: PropTypes.object,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  onKeyPress: PropTypes.func,
+  onKeyUp: PropTypes.func,
+  onKeyDown: PropTypes.func,
   allowDecimalPadding: PropTypes.bool,
   caretPositionOnFocus: PropTypes.number,
   createLocalList: PropTypes.bool,
@@ -73,13 +76,7 @@ ReactNumeric.propTypes = {
   digitalGroupSpacing: PropTypes.string,
   digitGroupSeparator: PropTypes.string,
   divisorWhenUnfocused: PropTypes.number,
-  emptyInputBehavior: PropTypes.oneOf([
-    "null",
-    "focus",
-    "press",
-    "always",
-    "zero"
-  ]),
+  emptyInputBehavior: PropTypes.oneOf(["null", "focus", "press", "always", "zero"]),
   eventBubbles: PropTypes.bool,
   eventIsCancelable: PropTypes.bool,
   failOnUnknownOption: PropTypes.bool,
@@ -94,13 +91,7 @@ ReactNumeric.propTypes = {
   negativePositiveSignPlacement: PropTypes.oneOf(["l", "r", "p", "s"]),
   negativeSignCharacter: PropTypes.string,
   noEventListeners: PropTypes.bool,
-  onInvalidPaste: PropTypes.oneOf([
-    "error",
-    "ignore",
-    "clamp",
-    "truncate",
-    "replace"
-  ]),
+  onInvalidPaste: PropTypes.oneOf(["error", "ignore", "clamp", "truncate", "replace"]),
   outputFormat: PropTypes.oneOf(["string", "number"]),
   overrideMinMaxLimits: PropTypes.oneOf(["ceiling", "floor", "ignore"]),
   positiveSignCharacter: PropTypes.string,
@@ -122,13 +113,13 @@ ReactNumeric.propTypes = {
   valuesToStrings: PropTypes.object,
   wheelOn: PropTypes.oneOf(["focus", "hover"]),
   wheelStep: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  preDefined: PropTypes.object
+  preDefined: PropTypes.object,
 };
 
 ReactNumeric.defaultProps = {
   type: "text",
   outputFormat: "number",
-  preDefined: {}
+  preDefined: {},
 };
 
 export const predefinedOptions = AutoNumeric.getPredefinedOptions();
