@@ -13,6 +13,11 @@ export default class ReactNumeric extends React.Component {
       ...this.props.preDefined,
       ...this.props,
       onChange: undefined,
+      onFocus: undefined,
+      onBlur: undefined,
+      onKeyPress: undefined,
+      onKeyUp: undefined,
+      onKeyDown: undefined,
       watchExternalChanges: false,
     });
   }
