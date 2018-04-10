@@ -2,9 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: path.resolve("./docs/src/index.js"),
+  entry: path.resolve("./example/index.js"),
   output: {
-    path: path.resolve("./docs/dist"),
+    path: path.resolve("./docs"),
     filename: "[name].js"
   },
   module: {
@@ -17,7 +17,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader?modules"],
-        include: path.resolve("./docs")
+        include: path.resolve("./example")
       },
       {
         test: /\.css$/,
@@ -32,10 +32,10 @@ module.exports = {
   },
   devServer: {
     publicPath: "/",
-    contentBase: path.join(__dirname, "docs"),
+    contentBase: path.join(__dirname, "example"),
     hot: true
   },
   plugins: [new HtmlWebpackPlugin({
-    title: 'react-date-range',
+    title: 'react-numeric',
   })],
 };

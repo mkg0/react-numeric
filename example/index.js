@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import ReactNumeric, { predefinedOptions } from "../../src";
+import ReactNumeric, { predefinedOptions } from "../src";
 import Snippet from "./components/Snippet";
 import ComponentSnippet from "./components/ComponentSnippet";
 
