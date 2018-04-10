@@ -23,8 +23,24 @@ export default class ReactNumeric extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.value !== newProps.value && this.getValue() !== newProps.value)
+    const isOptionsChanged = JSON.stringify({...this.props, value: undefined}) !== JSON.stringify({...newProps, value: undefined});
+    const isValueChanged = this.props.value !== newProps.value && this.getValue() !== newProps.value;
+    if (isValueChanged){
       this.autonumeric.set(newProps.value);
+    }
+    if (isOptionsChanged) {
+      this.autonumeric.update({
+        ...newProps.preDefined,
+        ...newProps,
+        onChange: undefined,
+        onFocus: undefined,
+        onBlur: undefined,
+        onKeyPress: undefined,
+        onKeyUp: undefined,
+        onKeyDown: undefined,
+        watchExternalChanges: false,
+      });
+    }
   }
   getValue() {
     if (!this.autonumeric) return;
