@@ -55,18 +55,26 @@ export default class ReactNumeric extends React.Component {
     this.props[eventName](event, this.getValue());
   }
   render() {
+    const inputProps = {};
+    [
+      'className',
+      'style',
+      'disabled',
+      'type',
+      'name',
+      'tabIndex',
+      'unselectable'
+    ].forEach(prop => inputProps[prop] = this.props[prop])
     return (
       <input
         ref={ref => (this.input = ref)}
-        type={this.props.type}
         onChange={e => this.callEventHandler(e, "onChange")}
         onFocus={e => this.callEventHandler(e, "onFocus")}
         onBlur={e => this.callEventHandler(e, "onBlur")}
         onKeyPress={e => this.callEventHandler(e, "onKeyPress")}
         onKeyUp={e => this.callEventHandler(e, "onKeyUp")}
         onKeyDown={e => this.callEventHandler(e, "onKeyDown")}
-        className={this.props.className}
-        style={this.props.style}
+        {...inputProps}
       />
     );
   }
@@ -76,6 +84,10 @@ ReactNumeric.propTypes = {
   type: PropTypes.oneOf(["text", "tel", "hidden"]),
   className: PropTypes.string,
   style: PropTypes.object,
+  disabled: PropTypes.bool,
+  name: PropTypes.string,
+  tabIndex: PropTypes.number,
+  unselectable: PropTypes.bool,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
@@ -142,6 +154,7 @@ ReactNumeric.defaultProps = {
   type: "text",
   outputFormat: "number",
   preDefined: {},
+  className: 'asdf',
 };
 
 export const predefinedOptions = AutoNumeric.getPredefinedOptions();
