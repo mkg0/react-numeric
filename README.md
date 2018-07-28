@@ -18,7 +18,7 @@ npm install react-numeric --save
 ## Usage
 
 ```jsx
-import ReactNumeric from 'ract-numeric';
+import ReactNumeric from 'react-numeric';
 
 export function USDMoneyInput(props){
   const { value } = props; // number typed
