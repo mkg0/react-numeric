@@ -24,7 +24,7 @@
   "author": "Mehmet Kamil Morcay <mehmetmorcay@gmail.com> (https://github.com/mkg0)",
   "license": "MIT",
   "dependencies": {
-    "autonumeric": "^4.2.7",
+    "autonumeric": "^4.4.0",
     "prop-types": "^15.6.1"
   },
   "devDependencies": {
