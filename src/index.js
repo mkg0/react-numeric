@@ -21,17 +21,16 @@ export default class ReactNumeric extends React.Component {
       watchExternalChanges: false,
     });
   }
-
-  componentWillReceiveProps(newProps) {
-    const isOptionsChanged = JSON.stringify({...this.props, value: undefined}) !== JSON.stringify({...newProps, value: undefined});
-    const isValueChanged = this.props.value !== newProps.value && this.getValue() !== newProps.value;
+  componentDidUpdate(prevProps) {
+    const isOptionsChanged = JSON.stringify({...this.props, value: undefined}) !== JSON.stringify({...prevProps, value: undefined});
+    const isValueChanged = this.props.value !== prevProps.value && this.getValue() !== prevProps.value;
     if (isValueChanged){
-      this.autonumeric.set(newProps.value);
+      this.autonumeric.set(this.props.value);
     }
     if (isOptionsChanged) {
       this.autonumeric.update({
-        ...newProps.preDefined,
-        ...newProps,
+        ...this.props.preDefined,
+        ...this.props,
         onChange: undefined,
         onFocus: undefined,
         onBlur: undefined,

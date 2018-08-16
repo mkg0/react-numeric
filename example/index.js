@@ -9,12 +9,25 @@ import Layout from "./components/Layout";
 class DemoPage extends Component {
   constructor(props) {
     super(props);
+    this.timer = undefined;
     this.state = {
+      counter: 0,
       intro: 12345,
       example1: 12345,
       example2: "12345",
       example3: 12345,
+      example4: 12345,
     };
+  }
+  componentDidMount() {
+    this.timer = window.setInterval(() => 
+      this.setState((prevState) => ({counter: prevState.counter + 1}))
+    , 500)
+  }
+  componentWillUnmount() {
+    if (this.timer) {
+      window.clearInterval(this.timer);
+    }
   }
   render() {
     return (
@@ -128,6 +141,30 @@ class DemoPage extends Component {
               onChange={(...params) => {
                 console.info("onChange", params);
                 this.setState({ example3: params[1] });
+              }}
+            />
+          }
+        />
+
+        <p>As you would expect, props are correctly passed to the underlying <a href="https://github.com/autoNumeric/autoNumeric" target="_blank">
+            autonumeric</a> component, and they can change during its lifetime while the value is preserved:</p>
+        <ComponentSnippet
+          initialMode="code"
+          code={`
+            <ReactNumeric
+              currencySymbol={['$', '€', '¥', '฿', '£'][this.state.counter % 5]}
+              value={this.state.example4}
+              onChange={(...params) => {
+                this.setState({ example4: params[1] });
+              }} />
+          `}
+          preview={
+            <ReactNumeric
+            currencySymbol={['$', '€', '¥', '฿', '£'][this.state.counter % 5]}
+              value={this.state.example4}
+              onChange={(...params) => {
+                console.info("onChange", params);
+                this.setState({ example4: params[1] });
               }}
             />
           }
