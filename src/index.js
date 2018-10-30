@@ -57,13 +57,15 @@ export default class ReactNumeric extends React.Component {
   render() {
     const inputProps = {};
     [
+      'id',
       'className',
       'style',
       'disabled',
       'type',
       'name',
       'tabIndex',
-      'unselectable'
+      'unselectable',
+      'size'
     ].forEach(prop => inputProps[prop] = this.props[prop])
     return (
       <input
@@ -82,12 +84,14 @@ export default class ReactNumeric extends React.Component {
 
 ReactNumeric.propTypes = {
   type: PropTypes.oneOf(["text", "tel", "hidden"]),
+  id: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object,
   disabled: PropTypes.bool,
   name: PropTypes.string,
   tabIndex: PropTypes.number,
   unselectable: PropTypes.bool,
+  size: PropTypes.number,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
