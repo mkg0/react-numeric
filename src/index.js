@@ -65,7 +65,9 @@ export default class ReactNumeric extends React.Component {
       'name',
       'tabIndex',
       'unselectable',
-      'size'
+      'size',
+      'autoFocus',
+      'placeholder'
     ].forEach(prop => inputProps[prop] = this.props[prop])
     return (
       <input
@@ -92,6 +94,8 @@ ReactNumeric.propTypes = {
   tabIndex: PropTypes.number,
   unselectable: PropTypes.bool,
   size: PropTypes.number,
+  autoFocus: PropTypes.bool,
+  placeholder: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
