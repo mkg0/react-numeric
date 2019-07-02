@@ -24,8 +24,7 @@
   "author": "Mehmet Kamil Morcay <mehmetmorcay@gmail.com> (https://github.com/mkg0)",
   "license": "MIT",
   "dependencies": {
-    "autonumeric": "^4.4.0",
-    "prop-types": "^15.6.1"
+    "autonumeric": "^4.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -51,7 +50,8 @@
     "webpack-dev-server": "^3.1.3"
   },
   "peerDependencies": {
-    "react": "=>15.0.0"
+    "react": "=>15.0.0",
+    "prop-types": "^15.6.1"
   },
   "scripts": {
     "build": "yarn build-library && yarn build-demo",

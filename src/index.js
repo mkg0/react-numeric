@@ -21,6 +21,9 @@ export default class ReactNumeric extends React.Component {
       watchExternalChanges: false,
     });
   }
+  componentWillUnmount(){
+    this.autonumeric.remove()
+  }
 
   componentWillReceiveProps(newProps) {
     const isOptionsChanged = JSON.stringify({...this.props, value: undefined}) !== JSON.stringify({...newProps, value: undefined});
