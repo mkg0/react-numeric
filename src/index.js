@@ -21,14 +21,17 @@ export default class ReactNumeric extends React.Component {
       watchExternalChanges: false,
     });
   }
-  componentWillUnmount(){
-    this.autonumeric.remove()
+  componentWillUnmount() {
+    this.autonumeric.remove();
   }
 
   componentWillReceiveProps(newProps) {
-    const isOptionsChanged = JSON.stringify({...this.props, value: undefined}) !== JSON.stringify({...newProps, value: undefined});
-    const isValueChanged = this.props.value !== newProps.value && this.getValue() !== newProps.value;
-    if (isValueChanged){
+    const isOptionsChanged =
+      JSON.stringify({ ...this.props, value: undefined }) !==
+      JSON.stringify({ ...newProps, value: undefined });
+    const isValueChanged =
+      this.props.value !== newProps.value && this.getValue() !== newProps.value;
+    if (isValueChanged) {
       this.autonumeric.set(newProps.value);
     }
     if (isOptionsChanged) {
@@ -60,18 +63,18 @@ export default class ReactNumeric extends React.Component {
   render() {
     const inputProps = {};
     [
-      'id',
-      'className',
-      'style',
-      'disabled',
-      'type',
-      'name',
-      'tabIndex',
-      'unselectable',
-      'size',
-      'autoFocus',
-      'placeholder'
-    ].forEach(prop => inputProps[prop] = this.props[prop])
+      "id",
+      "className",
+      "style",
+      "disabled",
+      "type",
+      "name",
+      "tabIndex",
+      "unselectable",
+      "size",
+      "autoFocus",
+      "placeholder",
+    ].forEach(prop => (inputProps[prop] = this.props[prop]));
     return (
       <input
         ref={ref => (this.input = ref)}
@@ -165,7 +168,7 @@ ReactNumeric.defaultProps = {
   type: "text",
   outputFormat: "number",
   preDefined: {},
-  className: 'asdf',
+  className: "asdf",
 };
 
 export const predefinedOptions = AutoNumeric.getPredefinedOptions();
