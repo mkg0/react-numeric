@@ -22,7 +22,7 @@ export default class ReactNumeric extends React.Component {
     });
   }
   componentWillUnmount() {
-    this.autonumeric.remove();
+    if (this.autonumeric) this.autonumeric.remove();
   }
 
   componentWillReceiveProps(newProps) {
